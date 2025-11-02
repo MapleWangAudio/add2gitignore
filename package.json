@@ -1,0 +1,52 @@
+{
+    "name": "add2gitignore",
+    "displayName": "Add2Gitignore",
+    "description": "在资源管理器中右键文件或文件夹，将其添加到最近的 Git 仓库的 .gitignore 中。在使用vs code workspace且有多个git仓库在其中时，能更正确的定位到对应的.gitignore文件。",
+    "version": "0.0.1",
+    "publisher": "maple-wang",
+    "engines": {
+        "vscode": "^1.84.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "onCommand:add2gitignore.addEntry"
+    ],
+    "main": "./dist/extension.js",
+    "contributes": {
+        "commands": [
+            {
+                "command": "add2gitignore.addEntry",
+                "title": "Add2Gitignore",
+                "category": "Git"
+            }
+        ],
+        "menus": {
+            "explorer/context": [
+                {
+                    "command": "add2gitignore.addEntry",
+                    "group": "navigation@2",
+                    "when": "resourceScheme == 'file'"
+                }
+            ]
+        }
+    },
+    "scripts": {
+        "compile": "tsc -p ./",
+        "vscode:prepublish": "npm run compile",
+        "watch": "tsc -w -p ./",
+        "lint": "eslint --ext .ts src",
+        "package": "vsce package --allow-missing-repository",
+        "publish": "vsce publish"
+    },
+    "devDependencies": {
+        "@types/node": "^18.19.0",
+        "@types/vscode": "^1.84.0",
+        "@typescript-eslint/eslint-plugin": "^6.21.0",
+        "@typescript-eslint/parser": "^6.21.0",
+        "eslint": "^8.57.0",
+        "typescript": "5.3.3",
+        "@vscode/vsce": "^2.24.0"
+    }
+}
