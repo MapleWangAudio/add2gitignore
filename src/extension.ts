@@ -5,7 +5,8 @@ import * as fs from 'fs';
 const fsp = fs.promises;
 
 export function activate(context: vscode.ExtensionContext) {
-    const disposable = vscode.commands.registerCommand('add-to-gitignore.addEntry', async (uri: vscode.Uri) => {
+    // Command id must match package.json contributes.commands.command
+    const disposable = vscode.commands.registerCommand('add2gitignore.addEntry', async (uri: vscode.Uri) => {
         if (!uri) {
             vscode.window.showErrorMessage('未获取到需要添加的文件或文件夹。');
             return;
